@@ -63,16 +63,6 @@
 		$(document).ready(function(){
 			liff.init(
 			  data => {
-					/*
-					// Now you can call LIFF API
-					const userId = data.context.userId;                   
-					liff.getProfile()
-					.then(profile => {
-					  const name = profile.displayName;
-					})
-					.catch((err) => {
-					});
-					*/
 					liff.sendMessages([msg])
 					.then(() => {
 					  liff.closeWindow();
@@ -81,6 +71,7 @@
 					});				  
 			},
 			  err => {
+				alert(JSON.stringify(err));
 			  }
 			);
 		});
