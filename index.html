@@ -62,18 +62,18 @@
 		
 		$(document).ready(function(){
 			liff.init(
-				$(document).append("<p>init</p>");
 			  data => {
 					liff.sendMessages([msg])
 					.then(() => {
-					  liff.closeWindow();
+						$(document).append($("<p>init</p>"));
+						liff.closeWindow();
 					})
 					.catch((err) => {
-						$(document).append("<p>"+JSON.stringify(err)+"</p>");
+						$(document).append($("<p>"+JSON.stringify(err)+"</p>"));
 					});				  
-			},
+				},
 			  err => {
-				$(document).append("<p>"+JSON.stringify(err)+"</p>");
+				$(document).append($("<p>"+JSON.stringify(err)+"</p>"));
 			  }
 			);
 		});
