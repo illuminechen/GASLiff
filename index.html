@@ -62,16 +62,18 @@
 		
 		$(document).ready(function(){
 			liff.init(
+				$(document).append("<p>init</p>");
 			  data => {
 					liff.sendMessages([msg])
 					.then(() => {
 					  liff.closeWindow();
 					})
 					.catch((err) => {
+						$(document).append("<p>"+JSON.stringify(err)+"</p>");
 					});				  
 			},
 			  err => {
-				alert(JSON.stringify(err));
+				$(document).append("<p>"+JSON.stringify(err)+"</p>");
 			  }
 			);
 		});
