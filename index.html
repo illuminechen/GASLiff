@@ -65,15 +65,15 @@
 			  data => {
 					liff.sendMessages([msg])
 					.then(() => {
-						$(document).append($("<p>init</p>"));
+						$("body").append($("<p>init</p>"));
 						liff.closeWindow();
 					})
 					.catch((err) => {
-						$(document).append($("<p>"+JSON.stringify(err)+"</p>"));
+						$("body").append($("<p>"+JSON.stringify(err)+"</p>"));
 					});				  
 				},
 			  err => {
-				$(document).append($("<p>"+JSON.stringify(err)+"</p>"));
+				$("body").append($("<p>"+JSON.stringify(err)+"</p>"));
 			  }
 			);
 		});
