@@ -6,7 +6,6 @@
 		<title>網頁面板</title>
 	</head>
 	<body>
-	  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>	  
 	  <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
       <script>
 		var msg = {  
@@ -62,19 +61,32 @@
 	    
 		const liffId = urlParams.get('liffId');
 
-		$(document).ready(function(){
+		window.onload = function(){
 			liff
 				.init({
 				liffId: liffId
 		    }).then(() => {
-				liff.sendMessages([msg])
-				$("body").append($("<p>init</p>"));
-				liff.closeWindow();
-			})
+				if (liff.isLoggedIn()) {
+					if (liff.isApiAvailable('shareTargetPicker')) {
+						liff.shareTargetPicker([msg])
+					}
+					else {
+						liff.sendMessages([msg])
+						.then(() => {
+						  document.body.innerHTML = "<p>init</p>";
+						  liff.closeWindow();
+						})
+						.catch((err) => {
+						});			
+					}
+				} else {
+					liff.login();
+				}
+			})			
 			.catch((err) => {
-				$("body").append($("<p>"+JSON.stringify(err)+"</p>"));
+			    document.body.innerHTML = "<p>"+JSON.stringify(err)+"</p>";
 			});			
-		});
+		};
 		</script>
 	</body>
 </html>
