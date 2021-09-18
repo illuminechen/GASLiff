@@ -58,8 +58,9 @@
 			  }
 			}
 		};
-	    
-		const liffId = urlParams.get('liffId');
+	    let urlParams = new URLSearchParams(window.location.search);
+	    const params = urlParams.has('liff.state')? new URLSearchParams(urlParams.get('liff.state')) : urlParams;
+		const liffId = params.get('liffId');
 
 		window.onload = function(){
 			liff
