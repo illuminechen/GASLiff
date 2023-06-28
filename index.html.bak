@@ -75,7 +75,7 @@
 						if(params.has('id'))
 						{
 							const id = params.get('id');
-							getFlex(id).then(r=>
+							getFlex(id).text(r=>
 								liff.sendMessages([r])
 								.then(() => {
 								  document.body.innerHTML = "<p>init</p>";
@@ -83,7 +83,7 @@
 								})
 								.catch((err) => {
 								});
-							)
+							);
 						}
 						else {
 							liff.sendMessages([msg])
