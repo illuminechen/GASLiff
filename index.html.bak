@@ -85,6 +85,15 @@
 								});
 							)
 						}
+						else {
+							liff.sendMessages([msg])
+							.then(() => {
+							  document.body.innerHTML = "<p>init</p>";
+							  liff.closeWindow();
+							})
+							.catch((err) => {
+							});
+						}
 					}
 				} else {
 					liff.login();
