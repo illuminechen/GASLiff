@@ -75,7 +75,7 @@
 						if(params.has('id'))
 						{
 							const id = params.get('id');
-							fetchAsync({method:"Load",id:uid}).then(r=>
+							fetchAsync({method:"Load",id:id}).then(r=>
 								r.json(t=>
 									liff.sendMessages([t])
 									.then(() => {
