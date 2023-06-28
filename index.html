@@ -76,7 +76,7 @@
 						{
 							const id = params.get('id');
 							fetchAsync({method:"Load",id:uid}).then(r=>
-								r.json(t=>t
+								r.json(t=>
 									liff.sendMessages([t])
 									.then(() => {
 									  document.body.innerHTML = "<p>init</p>";
