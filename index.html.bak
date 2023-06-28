@@ -63,8 +63,7 @@
 		const liffId = urlParams.get('liffId') ?? params.get('liffId');
 
 		window.onload = function(){
-			liff
-				.init({
+			liff.init({
 				liffId: liffId
 		    }).then(async () => {
 				if (liff.isLoggedIn()) {
@@ -72,6 +71,7 @@
 						liff.shareTargetPicker([msg])
 					}
 					else 
+					{
 						if(params.has('id'))
 						{
 							const id = params.get('id');
